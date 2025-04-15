@@ -1,0 +1,20 @@
+if(head==NULL) return head;
+ListNode *a=head;
+ListNode *curr=NULL;
+int seen[1000000];
+for(int i=0;i<1000000;i++) seen[i]=0;
+while(a!=NULL)
+{
+  if(seen[a->val]==1)
+  {
+  curr->next=a->next;
+  a=a->next;
+  }
+  else
+  {
+  seen[a->val]=1;
+  curr=a;
+  a=a->next;
+  }
+}
+return head;
