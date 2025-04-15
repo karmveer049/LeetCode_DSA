@@ -1,0 +1,26 @@
+if(head==NULL) return head;
+         ListNode *a=head;
+        int cnt=0;
+        while(a!=NULL)
+        {
+            a=a->next;
+            cnt++;
+        }
+        a=head;
+        cnt=cnt-n;
+        if(cnt==0) 
+        {
+            head=head->next;
+            return head;
+        }
+        for(int i=1;i<cnt;i++)
+        {
+            a=a->next;
+        }
+        if(a->next!=NULL)
+        {
+        a->next=a->next->next;
+        }
+        else return NULL;
+        return head;
+        
