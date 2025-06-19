@@ -1,0 +1,44 @@
+Node* addOne(Node* head) {
+        // Your Code here
+            Node *curr=head,*next,*prev=NULL;
+            while(curr!=NULL)
+            {
+                next=curr->next;
+                curr->next=prev;
+                prev=curr;
+                curr=next;
+            }
+        
+        head=prev;
+        Node *cur=head;
+        cur->data=cur->data+1;
+        while(cur->next!=NULL){
+        if(cur->data==10){
+            cur->data=0;
+            cur=cur->next;
+            cur->data=cur->data+1;
+        }
+        else
+        {
+          cur=cur->next;  
+        }
+        }
+        if(cur->data==10)
+        {
+            Node *newNode= new Node(1);
+            newNode->next=NULL;
+            cur->next=newNode;
+        }
+        curr=head,prev=NULL;
+            while(curr!=NULL)
+            {
+                next=curr->next;
+                curr->next=prev;
+                prev=curr;
+                curr=next;
+            }
+        
+        head=prev;
+        return head;
+        // return head of list after adding one
+    }
