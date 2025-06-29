@@ -1,0 +1,14 @@
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        int cnt=0;
+        for(ListNode* i=headA;i!=NULL;i=i->next){
+            for(ListNode* j=headB;j!=NULL;j=j->next){
+                if(i==j){
+                    cnt++;
+                     if(cnt==1) return i;
+                }
+               
+            }
+        }
+        return NULL;
+        
+    }
