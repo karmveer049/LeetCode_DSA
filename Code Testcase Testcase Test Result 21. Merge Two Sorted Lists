@@ -1,0 +1,42 @@
+ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+       ListNode *one=list1;
+       ListNode *two=list2;
+       ListNode *fin;
+       ListNode *finn;
+       
+    if (one == nullptr) return two;
+    if (two == nullptr) return one;
+       if(one->val<=two->val){ 
+        fin=one;
+        finn=fin;
+        one=one->next;
+       }
+       else { 
+        fin=two;
+        finn=fin;
+        two=two->next;
+       }
+       while(one!=nullptr&&two!=nullptr){
+          if(one->val <= two->val){
+        fin->next = one;
+        one = one->next;
+    } else {
+        fin->next = two;
+        two = two->next;
+    }
+    fin = fin->next;
+
+       }
+       while(one!=nullptr){
+        fin->next=one;
+        fin=fin->next;
+        one=one->next;
+       }
+       while(two!=nullptr){
+        fin->next=two;
+        fin=fin->next;
+        two=two->next;
+       }
+       fin->next=nullptr;
+       return finn;
+    }
