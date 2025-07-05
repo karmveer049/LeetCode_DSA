@@ -1,0 +1,12 @@
+int findLucky(vector<int>& arr) {
+        unordered_map<int,int> freq;
+        for(int x:arr) freq[x]++;
+        int out=-1;
+        for(auto [num,cnt]:freq) {
+            if(num==cnt)
+            {
+                out= max(out,num);
+            }
+        }
+        return out;
+    }
