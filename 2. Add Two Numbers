@@ -1,0 +1,62 @@
+ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode *one=l1;
+        ListNode *two=l2;
+        ListNode *trace=new ListNode (0);
+        trace->next=two;
+        int carry=0;
+        while(one!=nullptr&&two!=nullptr){
+            two->val=two->val+one->val+carry;
+            if(two->val>=10){
+                two->val=two->val%10;
+                two=two->next;
+                carry=1;
+                one=one->next;
+                
+            }
+            else{
+                two=two->next;
+                one=one->next;
+                carry=0;
+                
+            }
+            trace=trace->next;
+        }
+        
+        while(two!=nullptr){
+            two->val=two->val+carry;
+             if(two->val>=10){
+                two->val=two->val%10;
+                two=two->next;
+                carry=1;
+               
+             }
+             else {
+                 two=two->next;
+                carry=0;           
+             }
+        }
+        two=trace;
+        while(one!=nullptr){
+            ListNode *extra=new ListNode(carry+one->val);
+            two->next=extra;
+            two=two->next;
+            if(two->val>=10){
+                two->val=two->val%10;
+                carry=1;
+            }
+            else carry=0;
+            extra->next=nullptr;
+            one=one->next;
+        }
+     
+        if (carry == 1) {
+    
+    while (trace->next != nullptr) {
+        trace = trace->next;
+    }
+    trace->next = new ListNode(1);
+}
+
+
+        return l2;
+    }
