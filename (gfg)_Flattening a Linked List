@@ -1,0 +1,36 @@
+ Node *flatten(Node *root) {
+        // Your code here
+        Node* n=root;
+        Node* b=root;
+        Node* c=root;
+        Node* f=c;
+        while(n!=NULL){
+            n=n->next;
+            while(b->bottom!=NULL){
+                b=b->bottom;
+                c->bottom=b;
+                c=c->bottom;
+            }
+            
+            c->bottom=n;
+            c=c->bottom;
+            b=n;
+        }
+       
+        vector<int> fake;
+        Node *temp=f;
+        while(temp!=NULL){
+            fake.push_back(temp->data);
+            temp=temp->bottom;
+            
+        }
+        sort(fake.begin(),fake.end());
+        temp=f;
+        int i=0;
+        while(temp!=NULL){
+            temp->data=fake[i];
+            temp=temp->bottom;
+            i++;
+        }
+        return f;
+    }
