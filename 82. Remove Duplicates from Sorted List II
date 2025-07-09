@@ -1,0 +1,21 @@
+ ListNode* deleteDuplicates(ListNode* head) {
+        unordered_map<int,int> freq;
+        ListNode *curr=head;
+        while(curr!=nullptr){
+            freq[curr->val]++;
+            curr=curr->next;
+        }
+        ListNode *zero =new ListNode(0);
+        zero->next=head;
+        curr=zero;
+        head=zero;
+        while(curr!=nullptr){
+            if(freq[curr->val]>1) zero->next=curr->next;
+            else zero=curr;
+            curr=curr->next;
+        }
+        head=head->next;
+        return head;
+
+
+    }
